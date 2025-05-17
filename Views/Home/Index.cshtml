@@ -1,15 +1,20 @@
-﻿@model List<Projet.Models.Produit>
+﻿@model IEnumerable<Projet.Core.Domain.Produit>
 
-<h1>Nos Produits</h1>
-<div style="display: flex; gap: 20px;">
+<h1 class="mb-4">Nos Produits</h1>
+
+<div class="row">
     @foreach (var p in Model)
     {
-        <div style="border: 1px solid #ccc; padding: 10px; width: 250px;">
-            <img src="/images/@p.photo" alt="@p.nom_produit" style="width: 100%; height: auto;" />
-            <h3>@p.nom_produit</h3>
-            <p>@p.description</p>
-            <p><strong>@p.prix €</strong></p>
-            <p>Stock : @p.stock</p>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="~/images/@p.Photo" class="card-img-top" alt="@p.Nom_Produit" />
+                <div class="card-body">
+                    <h5 class="card-title">@p.Nom_Produit</h5>
+                    <p class="card-text">@p.Description</p>
+                    <p class="card-text"><strong>@p.Prix €</strong></p>
+                    <p class="card-text">Stock : @p.Stock</p>
+                </div>
+            </div>
         </div>
     }
 </div>

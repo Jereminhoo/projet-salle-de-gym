@@ -1,39 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
-using Projet.Models;
 using Projet.Data;
-using System.Diagnostics;
+using Projet.Core.Domain;
 
 namespace Projet.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
         private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
             _context = context;
         }
 
-
         public IActionResult Index()
         {
-            var produits = _context.Produits.ToList(); // récupère les produits de la BDD
+            var produits = _context.Produits.ToList();
             return View(produits);
         }
-
 
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

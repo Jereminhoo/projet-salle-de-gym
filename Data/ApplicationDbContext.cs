@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Projet.Models;
+using Projet.Core.Domain;
+
 
 namespace Projet.Data
 {
@@ -11,6 +13,7 @@ namespace Projet.Data
         {
 
         }
+
         public DbSet<Produit> Produits { get; set; }
 
     }
